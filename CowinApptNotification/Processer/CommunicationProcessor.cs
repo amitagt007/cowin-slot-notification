@@ -17,11 +17,11 @@ namespace CowinApptNotification
         }
 
         public void SendSMS(string messageBody, string phoneNumber)
-        { 
+        {
             string accountSid = _config.GetSection("TWILIO_ACCOUNT_SID").Value;
             string authToken = _config.GetSection("TWILIO_AUTH_TOKEN").Value;
             string fromPhoneNumber = _config.GetSection("TWILIO_PHONE_NUMBER").Value;
-            
+
             TwilioClient.Init(accountSid, authToken);
             var smsMessage = MessageResource.Create(
             body: messageBody,
@@ -29,9 +29,9 @@ namespace CowinApptNotification
             to: new Twilio.Types.PhoneNumber($"+91{ phoneNumber }")
             );
 
-            if(smsMessage.Sid != null)
+            if (smsMessage.Sid != null)
             {
-                Console.WriteLine($"SMS sent to $ + 91{ phoneNumber }");
+                Console.WriteLine($"SMS sent to + 91{ phoneNumber }");
             }
         }
     }
